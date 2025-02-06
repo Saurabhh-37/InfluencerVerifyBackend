@@ -22,7 +22,10 @@ client = OpenAI(api_key=PERPLEXITY_API_KEY, base_url="https://api.perplexity.ai"
 genai.configure(api_key=GEMINI_API_KEY)
 
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
+
+# Allow specific frontend origin
+CORS(app, resources={r"/*": {"origins": "https://explore-dash.vercel.app"}})
 
 def remove_duplicate_claims(claims):
     """
